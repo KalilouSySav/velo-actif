@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0.32
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: gr007,,
+      MYSQL_DATABASE: velo-actif
+    ports:
+#      - "3306:3306"
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: velo-actif-app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/velo-actif?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: gr007,,
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
