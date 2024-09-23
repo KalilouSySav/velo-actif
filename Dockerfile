@@ -25,7 +25,3 @@ EXPOSE 8080
 
 # Set the entry point to run the JAR file
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
-# Set environment variables for UTF-8 encoding
-ENV LANG=C.UTF-8
-ENV LC_ALL=C.UTF-8

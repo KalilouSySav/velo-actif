@@ -8,8 +8,8 @@ services:
       MYSQL_ROOT_PASSWORD: gr007,,
       MYSQL_DATABASE: velo-actif
     ports:
-#      - "3306:3306"
-      - "3307:3306"
+      - "3306:3306"
+#      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
 
